@@ -1,0 +1,24 @@
+{
+  "name": "jobs-calc",
+  "version": "1.0.0",
+  "description": "Freelance Calculator",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onerbreno/jobs-calc.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onerbreno/jobs-calc/issues"
+  },
+  "homepage": "https://github.com/onerbreno/jobs-calc#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
