@@ -8,6 +8,8 @@ server.set('view engine', 'ejs')
 // habilitar arquivos statics
 server.use(express.static("public"))
 
+server.use(express.urlencoded({ extended: true }))
+
 // routes
 server.use(routes)
-server.listen(3000, () => console.log("Rodando na porta 5500"))
+server.listen(3000, () => console.log("Rodando na porta 3000W"))
