@@ -12,4 +12,4 @@ server.use(express.urlencoded({ extended: true }))
 
 // routes
 server.use(routes)
-server.listen(3000, () => console.log("Rodando na porta 3000W"))
+server.listen(3000, () => console.log("Rodando na porta 3000"))
