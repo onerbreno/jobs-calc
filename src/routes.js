@@ -116,7 +116,7 @@ const Job = {
     }
 }
 
-// routes.get('/', DashboardController.index)
+routes.get('/', DashboardController.index)
 routes.get('/job', JobController.create )
 routes.post('/job', JobController.save)
 routes.get('/job/:id', JobController.show)
