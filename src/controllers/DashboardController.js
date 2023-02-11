@@ -6,9 +6,25 @@ module.exports = {
     index(req, res) {
         const jobs = Job.get()
         const profile = Profile.get()
+
+        const statusCount = {
+            progress: 0,
+            done: 0,
+            total: jobs.length
+        }
+
+        // Total de horas por dia de cada job em progress
+        let jobTotalHours = 0;
+
         const updatedJobs = jobs.map((job) => {
             const remaining = JobUtils.remainingDays(job)
             const status = remaining <= 0 ? 'done' : 'progress'
+
+            // Somando qtd de status
+            statusCount[status] += 1
+
+            // Total de horas por dia de cada job em progress
+            jobTotalHours = status == 'progress' ? jobTotalHours + Number(job['daily-hours']) : jobTotalHours
 
             return {
                 ...job,
@@ -18,6 +34,9 @@ module.exports = {
             }
         })
 
-        return res.render('index', { jobs: updatedJobs })
+        // qtd de horas por dia que quero trabalhar menos qtd de horas/dia de cada job em progress
+        const freeHours = profile["hours-per-day"] - jobTotalHours
+
+        return res.render('index', { jobs: updatedJobs, profile: profile, statusCount: statusCount, freeHours: freeHours })
     }
 }
